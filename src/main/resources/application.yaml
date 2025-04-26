@@ -20,3 +20,8 @@ spring:
       enabled: true 
 server:
   port: 8785
+app:
+  validation:
+    message:
+      login: "Credenciales inválidas"
+      email: "El correo ya existe."

@@ -35,4 +35,12 @@ public class GlobalExceptionHandler {
                 .errors(errorDetails)
                 .build();
     }
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ErrorResponse handleEmailAlreadyExists(EmailAlreadyExistsException ex) {
+        return ErrorResponse.builder()
+                .code(409)
+                .message(ex.getMessage())
+                .build();
+    } 
 }
