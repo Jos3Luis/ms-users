@@ -1,0 +1,22 @@
+logging:
+  level:
+    org.springframework.jdbc.core: DEBUG  # Para loguear las consultas de JDBC
+    org.springframework.data.r2dbc: DEBUG  # Para loguear las consultas de Spring Data R2DBC
+    reactor.core.publisher: DEBUG  # Para loguear los Publishers (puede ser útil para el flujo reactivo)
+
+#jdbc:h2:mem:testdb
+spring:
+  r2dbc:
+    url: r2dbc:h2:mem:///testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+  h2:
+    console:
+      enabled: true 
+server:
+  port: 8785
